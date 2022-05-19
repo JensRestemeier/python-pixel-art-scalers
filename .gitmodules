@@ -1,0 +1,3 @@
+[submodule "gimp-plugin-pixel-art-scalers"]
+	path = gimp-plugin-pixel-art-scalers
+	url = https://github.com/bbbbbr/gimp-plugin-pixel-art-scalers
