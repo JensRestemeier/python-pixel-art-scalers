@@ -290,6 +290,7 @@ PyMODINIT_FUNC
 #endif
 
 	hqxInit();
+	xbr_init_data();
 
 #if PY3K
 	return m;
