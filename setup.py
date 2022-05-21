@@ -5,9 +5,7 @@ https://github.com/pypa/sampleproject
 """
 
 # Always prefer setuptools over distutils
-from setuptools import setup, find_packages, Extension
-# To use a consistent encoding
-from codecs import open
+from setuptools import setup, Extension
 from os import path
 
 module1 = Extension('_pixel_art_scalers',
@@ -36,7 +34,7 @@ setup(
     long_description="",
 
     # The project's main homepage.
-    url='',
+    url='https://github.com/JensRestemeier/python-pixel-art-scalers',
 
     # Author details
     author='Jens Ch. Restemeier',
@@ -45,7 +43,9 @@ setup(
     # Choose your license
     license='GPL3',
 
-##    install_requires=[],
+    install_requires=[
+        'pillow',  
+    ],
 
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
@@ -59,7 +59,7 @@ setup(
         'Intended Audience :: Developers',
 
         # Pick your license as you wish (should match "license" above)
-        'License :: Public Domain',
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
 
         # Specify the Python versions you support here. In particular, ensure
         # that you indicate whether you support Python 2, Python 3 or both.

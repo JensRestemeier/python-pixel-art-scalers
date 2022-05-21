@@ -1,7 +1,6 @@
 from pixel_art_scalers import hq2x, hq3x, hq4x, xbr2x, xbr3x, xbr4x, scalex_2x, scalex_3x, scalex_4x
 from PIL import Image
 
-
 src_image = Image.open("test.png")
 
 dst_image = hq2x(src_image)

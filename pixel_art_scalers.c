@@ -1,7 +1,6 @@
 #include <Python.h>
 
 #include "hqx.h"
-#include "scaler_nearestneighbor.h"
 #include "scaler_scalex.h"
 #include "xbr_filters.h"
 
@@ -241,10 +240,10 @@ py_scaler_scalex_4x(PyObject* self, PyObject* args) {
 	Py_RETURN_NONE;
 }
 
-static PyMethodDef templatemethods[] = {
+static PyMethodDef nativemethods[] = {
 	{ "py_hq2x_32", (PyCFunction)py_hq2x_32, METH_VARARGS, "HQ2X algorithm" },
-	{ "py_hq3x_32", (PyCFunction)py_hq3x_32, METH_VARARGS, "HQ2X algorithm" },
-	{ "py_hq4x_32", (PyCFunction)py_hq4x_32, METH_VARARGS, "HQ2X algorithm" },
+	{ "py_hq3x_32", (PyCFunction)py_hq3x_32, METH_VARARGS, "HQ3X algorithm" },
+	{ "py_hq4x_32", (PyCFunction)py_hq4x_32, METH_VARARGS, "HQ4X algorithm" },
 	{ "py_xbr_filter_xbr2x", (PyCFunction)py_xbr_filter_xbr2x, METH_VARARGS, "XBR2X algorithm" },
 	{ "py_xbr_filter_xbr3x", (PyCFunction)py_xbr_filter_xbr3x, METH_VARARGS, "XBR3X algorithm" },
 	{ "py_xbr_filter_xbr4x", (PyCFunction)py_xbr_filter_xbr4x, METH_VARARGS, "XBR4X algorithm" },
@@ -255,13 +254,13 @@ static PyMethodDef templatemethods[] = {
 };
 
 #if PY3K
-static PyModuleDef templatemodule = {
+static PyModuleDef nativemodule = {
 
 	PyModuleDef_HEAD_INIT,
 	"_pixel_art_scalers",
 	"A simple wrapper for gimp-pixel-art-scaler",
 	-1,
-	templatemethods, NULL, NULL, NULL, NULL
+	nativemethods, NULL, NULL, NULL, NULL
 };
 #endif
 
@@ -269,7 +268,7 @@ PyMODINIT_FUNC
 #if PY3K
 	PyInit__pixel_art_scalers(void)
 #else
-	inittemplate(void)
+	initnative(void)
 #endif
 {
 	PyObject* mainmod = PyImport_AddModule("__main__");
@@ -278,9 +277,9 @@ PyMODINIT_FUNC
 	PyObject* m;
 
 #if PY3K
-	m = PyModule_Create(&templatemodule);
+	m = PyModule_Create(&nativemodule);
 #else
-	m = Py_InitModule3("_pixel_art_scalers", templatemethods, "A simple wrapper for gimp-pixel-art-scaler");
+	m = Py_InitModule3("_pixel_art_scalers", nativemethods, "A simple wrapper for gimp-pixel-art-scaler");
 #endif
 	if (m == NULL)
 #if PY3K
